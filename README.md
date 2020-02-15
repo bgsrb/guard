@@ -9,21 +9,21 @@ type Person struct {
 	Age  int
 }
 
-func NewPerson(name string, age int) (Person, error) {
+func NewPerson(name string, age int) (*Person, error) {
 
 	if name == nil {
-		return Person{}, errors.New("Name cannot be null.")
+		return nil, errors.New("Name cannot be null.")
 	}
 
 	if name == "" {
-		return Person{}, errors.New("Name cannot be empty.")
+		return nil, errors.New("Name cannot be empty.")
 	}
 
 	if len(name) < 3 {
-		return Person{}, errors.New("Name cannot be shorter than 3 characters")
+		return nil, errors.New("Name cannot be shorter than 3 characters")
 	}
 
-	return Person{
+	return &Person{
 		Name: name,
 		Age:  age,
 	}, nil
@@ -37,14 +37,14 @@ type Person struct {
 	Age  int
 }
 
-func NewPerson(name string, age int) (Person, error) {
+func NewPerson(name string, age int) (*Person, error) {
 
 	v := Guard(name, "Name").NotNull().NotEmpty().MinLength(3)
 	
 	if v.Error != nil {
-		return Person{}, v.Error
+		return nil, v.Error
 	} else {
-		return Person{
+		return &Person{
 			Name: name,
 			Age:  age,
 		}, nil
