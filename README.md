@@ -2,9 +2,10 @@
 Guard is a fluent argument validation library.
 
 # Usage
+### Without Guard
 ```go
 type Person struct {
-	Name string
+ 	Name string
 	Age  int
 }
 
@@ -29,7 +30,7 @@ func NewPerson(name string, age int) (Person, error) {
 
 }
 ```
-
+### With Guard
 ```go
 type Person struct {
 	Name string
@@ -39,7 +40,8 @@ type Person struct {
 func NewPerson(name string, age int) (Person, error) {
 
 	v := Guard(name, "Name").NotNull().NotEmpty().MinLength(3)
-	if v.Error == nil {
+	
+	if v.Error != nil {
 		return Person{}, v.Error
 	} else {
 		return Person{
