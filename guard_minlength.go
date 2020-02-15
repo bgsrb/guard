@@ -9,18 +9,23 @@ import (
 
 func (arg Argument) MinLength(minLength int) Argument {
 
-	if arg.Err != nil {
+	return arg.MinLengthWithMeesage(minLength, messages.MinLength)
+}
+
+func (arg Argument) MinLengthWithMeesage(minLength int, message string) Argument {
+
+	if arg.Error != nil {
 		return arg
 	}
 
 	switch arg.Value.(type) {
 	case string:
 		if len(arg.Value.(string)) < minLength {
-			arg.Err = fmt.Errorf(messages.MinLength, arg.Name, minLength)
+			arg.Error = fmt.Errorf(message, arg.Name, minLength)
 		}
 		break
 	default:
-		arg.Err = errors.New("The value's type is invalid")
+		arg.Error = errors.New("The value's type is invalid")
 		break
 	}
 

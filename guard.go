@@ -1,7 +1,7 @@
 package guard
 
 type Argument struct {
-	Err   error
+	Error error
 	Name  string
 	Value interface{}
 }

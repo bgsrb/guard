@@ -25,7 +25,7 @@ func Test_Empty(t *testing.T) {
 				value: "",
 			},
 			want: Argument{
-				Err:   fmt.Errorf(messages.NotEmpty, ""),
+				Error: fmt.Errorf(messages.NotEmpty, ""),
 				Name:  "",
 				Value: "",
 			},
@@ -36,7 +36,7 @@ func Test_Empty(t *testing.T) {
 				value: "not_empty",
 			},
 			want: Argument{
-				Err:   nil,
+				Error: nil,
 				Name:  "",
 				Value: "not_empty",
 			},

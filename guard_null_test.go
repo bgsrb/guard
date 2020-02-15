@@ -25,7 +25,7 @@ func Test_Null(t *testing.T) {
 				value: nil,
 			},
 			want: Argument{
-				Err:   fmt.Errorf(messages.NotEmpty, ""),
+				Error: fmt.Errorf(messages.NotEmpty, ""),
 				Name:  "",
 				Value: nil,
 			},
@@ -36,7 +36,7 @@ func Test_Null(t *testing.T) {
 				value: "not_null",
 			},
 			want: Argument{
-				Err:   nil,
+				Error: nil,
 				Name:  "",
 				Value: "not_null",
 			},

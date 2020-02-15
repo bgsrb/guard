@@ -8,12 +8,17 @@ import (
 
 func (arg Argument) NotEmpty() Argument {
 
-	if arg.Err != nil {
+	return arg.NotEmptyWithMeesage(messages.NotEmpty)
+}
+
+func (arg Argument) NotEmptyWithMeesage(message string) Argument {
+
+	if arg.Error != nil {
 		return arg
 	}
 
 	if arg.Value == "" {
-		arg.Err = fmt.Errorf(messages.NotEmpty, arg.Name)
+		arg.Error = fmt.Errorf(message, arg.Name)
 	}
 
 	return arg

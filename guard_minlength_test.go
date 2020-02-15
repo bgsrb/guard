@@ -27,7 +27,7 @@ func Test_MinLength(t *testing.T) {
 				minlength: 2,
 			},
 			want: Argument{
-				Err:   fmt.Errorf(messages.MinLength, "", 2),
+				Error: fmt.Errorf(messages.MinLength, "", 2),
 				Name:  "",
 				Value: "1",
 			},
@@ -39,7 +39,7 @@ func Test_MinLength(t *testing.T) {
 				minlength: 2,
 			},
 			want: Argument{
-				Err:   nil,
+				Error: nil,
 				Name:  "",
 				Value: "01",
 			},

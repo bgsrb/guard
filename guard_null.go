@@ -8,12 +8,17 @@ import (
 
 func (arg Argument) NotNull() Argument {
 
-	if arg.Err != nil {
+	return arg.NotNullWithMeesage(messages.NotEmpty)
+}
+
+func (arg Argument) NotNullWithMeesage(message string) Argument {
+
+	if arg.Error != nil {
 		return arg
 	}
 
 	if arg.Value == nil {
-		arg.Err = fmt.Errorf(messages.NotEmpty, arg.Name)
+		arg.Error = fmt.Errorf(message, arg.Name)
 	}
 
 	return arg
