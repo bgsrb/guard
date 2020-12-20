@@ -43,12 +43,12 @@ func NewPerson(name string, age int) (*Person, error) {
 	
 	if v.Error != nil {
 		return nil, v.Error
-	} else {
-		return &Person{
-			Name: name,
-			Age:  age,
-		}, nil
 	}
+        return &Person{
+		Name: name,
+		Age:  age,
+        }, nil
+	
 
 }
 ```
