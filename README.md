@@ -27,7 +27,6 @@ func NewPerson(name string, age int) (*Person, error) {
 		Name: name,
 		Age:  age,
 	}, nil
-
 }
 ```
 ### With Guard
@@ -44,11 +43,10 @@ func NewPerson(name string, age int) (*Person, error) {
 	if v.Error != nil {
 		return nil, v.Error
 	}
+
         return &Person{
 		Name: name,
 		Age:  age,
-        }, nil
-	
-
+        }, nil	
 }
 ```
